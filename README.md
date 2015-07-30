@@ -1,0 +1,1 @@
+[Flask](http://flask.pocoo.org/) 是一个基于 [Werkzeug](http://werkzeug.pocoo.org/) 和   [Jinja2](http://jinja.pocoo.org/) 的 Web 应用框架，它能快速的开发 Web 应用程序。Flask 的核心非常小巧，通过 extension 可以增加它的各种功能。这里是一些学习 Flask 的例子。

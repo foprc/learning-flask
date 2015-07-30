@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>my guestbook</title>
+
+    <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/docs.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Learning Flask</a>
+            </div>
+        </div>
+    </nav>
+    <!-- /.navbar -->
+    <div class="container">
+        <h1>Guestbook</h1>
+        <div id="form-area">
+            <h3>PLease comment here</h3>
+            <form class="form-horizontal" action="/post" method="post">
+                <div class="form-group">
+                    <label for="nameInp" class="col-sm-2 control-label">Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nameInp" placeholder="" name="name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="commentArea" class="col-sm-2 control-label">Comment:</label>
+                    <div class="col-sm-10">
+                        <textarea name="comments" class="form-control" id="commentArea" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="entry-area">
+            <h3>The comments history</h3>
+            {% if not greeting_list  %}
+                <div class="alert alert-info" role="alert">No comments.</div>
+            {% else %}
+                <div class="entries bs-docs-section">
+                {% for greeting in greeting_list %}
+                    <div class="bs-callout bs-callout-info">
+                        <h4>{{greeting.name}} <small>commented at {{greeting.create_at|datetime_fmt}}</small></h4>
+                        <p>{{greeting.comment|nl2br}}</p>
+                    </div>
+                {% endfor%}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- /.container -->
+</body>
+
+</html>
